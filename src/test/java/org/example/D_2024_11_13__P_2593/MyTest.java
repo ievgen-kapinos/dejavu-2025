@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * https://leetcode.com/problems/find-score-of-an-array-after-marking-all-elements
  *
  * <pre>
- *Medium
+ * Medium
  * Topics
  * Companies
  * Hint
@@ -61,7 +61,7 @@ class MyTest {
     Solution solution = new Solution();
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/D_2024_11_13__P_2593.csv", numLinesToSkip = 1, maxCharsPerColumn=500000)
+    @CsvFileSource(resources = "/D_2024_11_13__P_2593.csv", numLinesToSkip = 1, maxCharsPerColumn = 500000)
     public void myTest(long expected, String numsStr) {
         var nums = MyTestUtils.parseArray(numsStr);
         assertEquals(expected, solution.findScore(nums));
@@ -73,7 +73,7 @@ class Solution0 {
     public long findScore(int[] nums) {
         var score = 0L;
 
-        while(true) {
+        while (true) {
             var minIndex = -1;
             for (int i = 0; i < nums.length; i++) {
                 if (nums[i] == -1) {
@@ -88,16 +88,17 @@ class Solution0 {
                 score += nums[minIndex];
                 nums[minIndex] = -1;
                 if (minIndex > 0) {
-                    nums[minIndex-1] = -1;
+                    nums[minIndex - 1] = -1;
                 }
-                if (minIndex < nums.length-1) {
-                    nums[minIndex+1] = -1;
+                if (minIndex < nums.length - 1) {
+                    nums[minIndex + 1] = -1;
                 }
             } else {
                 break;
             }
 
-        };
+        }
+        ;
 
         return score;
     }
@@ -135,11 +136,11 @@ class Solution {
             // find and mark current and prev item
             var originalIndex = sorted[sortedIndex][1];
             if (originalIndex > 0) {
-                var prevSortedIndex = original[originalIndex-1];
+                var prevSortedIndex = original[originalIndex - 1];
                 sorted[prevSortedIndex][0] = -1; // mark prev item
             }
-            if (originalIndex < nums.length-1) {
-                var nextSortedIndex = original[originalIndex+1];
+            if (originalIndex < nums.length - 1) {
+                var nextSortedIndex = original[originalIndex + 1];
                 sorted[nextSortedIndex][0] = -1; // mark next item
             }
         }

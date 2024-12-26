@@ -5,8 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import static org.junit.jupiter.params.shadow.com.univocity.parsers.common.NormalizedString.toArray;
-
 public class MyTestUtils {
 
     /**
@@ -47,9 +45,9 @@ public class MyTestUtils {
                 .replace("],[", "\n")
                 .lines()
                 .map(line -> Arrays
-                    .stream(line.split(","))
-                    .mapToInt(Integer::parseInt)
-                    .toArray()
+                        .stream(line.split(","))
+                        .mapToInt(Integer::parseInt)
+                        .toArray()
                 )
                 .toArray(int[][]::new);
     }
@@ -60,11 +58,11 @@ public class MyTestUtils {
      */
     public static TreeNode parseTree(String input) {
         var arr = input
-            .substring(1, input.length() - 1)
-            .replace(",", "\n")
-            .lines()
-            .map(val -> val.equals("null") ? null : Integer.parseInt(val))
-            .toArray(Integer[]::new);
+                .substring(1, input.length() - 1)
+                .replace(",", "\n")
+                .lines()
+                .map(val -> val.equals("null") ? null : Integer.parseInt(val))
+                .toArray(Integer[]::new);
 
         if (arr[0] == null) {
             return null;
@@ -86,8 +84,8 @@ public class MyTestUtils {
                 } else {
                     queue.add(null);
                 }
-                if ((i+1) < arr.length && arr[i+1] != null) {
-                    parentNode.right = new TreeNode(arr[i+1]);
+                if ((i + 1) < arr.length && arr[i + 1] != null) {
+                    parentNode.right = new TreeNode(arr[i + 1]);
                     queue.add(parentNode.right);
                 } else {
                     queue.add(null);
@@ -120,10 +118,11 @@ public class MyTestUtils {
             if (node.left != null) {
                 nodes.add(node.left);
             }
-            if (node.right !=null) {
+            if (node.right != null) {
                 nodes.add(node.right);
             }
         }
         return nodes.stream().mapToInt(node -> node.val).toArray();
     }
+
 }

@@ -64,7 +64,7 @@ class MyTest {
     Solution solution = new Solution();
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/D_2024_11_19__P_3152.csv", numLinesToSkip = 1, maxCharsPerColumn=500000)
+    @CsvFileSource(resources = "/D_2024_11_19__P_3152.csv", numLinesToSkip = 1, maxCharsPerColumn = 500000)
     public void myTest(String expectedStr, String numsStr, String queriesStr) {
         var expected = MyTestUtils.parseArrayBoolean(expectedStr);
         var nums = MyTestUtils.parseArray(numsStr);
@@ -80,12 +80,12 @@ class Solution {
         var ranges = new TreeMap<Integer, Integer>();
         var rangeFrom = 0;
         for (int rangeTo = 1; rangeTo < nums.length; rangeTo++) {
-            if ((nums[rangeTo-1] % 2) == (nums[rangeTo] % 2)) {
-                ranges.put(rangeFrom, rangeTo-1);
+            if ((nums[rangeTo - 1] % 2) == (nums[rangeTo] % 2)) {
+                ranges.put(rangeFrom, rangeTo - 1);
                 rangeFrom = rangeTo;
             }
         }
-        ranges.put(rangeFrom, nums.length-1);
+        ranges.put(rangeFrom, nums.length - 1);
 
         var answer = new boolean[queries.length];
         for (int i = 0; i < queries.length; i++) {

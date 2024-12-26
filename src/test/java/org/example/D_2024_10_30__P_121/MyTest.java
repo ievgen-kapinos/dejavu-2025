@@ -47,7 +47,7 @@ class MyTest {
 
     @Test
     public void case2() {
-        assertEquals(0, solution.maxProfit(new int[]{7,6,4,3,1}));
+        assertEquals(0, solution.maxProfit(new int[]{7, 6, 4, 3, 1}));
     }
 }
 

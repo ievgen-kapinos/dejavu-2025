@@ -7,7 +7,6 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import java.util.Stack;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 /**
@@ -58,7 +57,7 @@ class MyTest {
     Solution solution = new Solution();
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/D_2024_11_18__P_1475.csv", numLinesToSkip = 1, maxCharsPerColumn=500000)
+    @CsvFileSource(resources = "/D_2024_11_18__P_1475.csv", numLinesToSkip = 1, maxCharsPerColumn = 500000)
     public void myTest(String expectedStr, String pricesStr) {
         var expected = MyTestUtils.parseArray(expectedStr);
         var prices = MyTestUtils.parseArray(pricesStr);

@@ -80,7 +80,7 @@ class Solution {
         for (int i = 0; i < nums.length; i++) {
             var sum = 0;
             var reminder = nums[i];
-            do  {
+            do {
                 sum += reminder % 10;
                 reminder /= 10;
             } while (reminder > 0);

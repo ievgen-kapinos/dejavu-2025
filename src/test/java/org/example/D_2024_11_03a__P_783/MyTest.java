@@ -1,7 +1,5 @@
 package org.example.D_2024_11_03a__P_783;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 /**
  * https://leetcode.com/problems/minimum-distance-between-bst-nodes/
  *
@@ -30,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  *
  * Note: This question is the same as 530: https://leetcode.com/problems/minimum-absolute-difference-in-bst/
  * </pre>
- *
+ * <p>
  * Case 3
  * [27,null,34,null,58,50,null,44] -> 6
  */
@@ -57,16 +55,16 @@ class MyTest {
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode() {}
+ * TreeNode(int val) { this.val = val; }
+ * TreeNode(int val, TreeNode left, TreeNode right) {
+ * this.val = val;
+ * this.left = left;
+ * this.right = right;
+ * }
  * }
  */
 
@@ -74,15 +72,20 @@ class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
-    TreeNode() {}
-    TreeNode(int val) { this.val = val; }
+
+    TreeNode() {
+    }
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+
     TreeNode(int val, TreeNode left, TreeNode right) {
         this.val = val;
         this.left = left;
         this.right = right;
     }
 }
-
 
 
 class Solution {

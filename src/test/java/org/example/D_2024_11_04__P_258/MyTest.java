@@ -47,6 +47,7 @@ class MyTest {
     public void case2() {
         assertEquals(0, solution.addDigits(0));
     }
+
     @Test
     public void case3() {
         assertEquals(1, solution.addDigits(Integer.MAX_VALUE));

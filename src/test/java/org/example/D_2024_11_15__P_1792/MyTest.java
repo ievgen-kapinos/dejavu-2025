@@ -51,7 +51,7 @@ class MyTest {
     Solution solution = new Solution();
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/D_2024_11_15__P_1792.csv", numLinesToSkip = 1, maxCharsPerColumn=500000)
+    @CsvFileSource(resources = "/D_2024_11_15__P_1792.csv", numLinesToSkip = 1, maxCharsPerColumn = 500000)
     public void myTest(double expected, String classesStr, int extraStudents) {
         var classes = MyTestUtils.parseArray2D(classesStr);
         assertEquals(expected, solution.maxAverageRatio(classes, extraStudents), 0.00001);
@@ -95,7 +95,8 @@ class Solution0 {
 
 class Solution {
 
-    private record PqEntry (double delta, int classIndex) {}
+    private record PqEntry(double delta, int classIndex) {
+    }
 
     private double getDelta(int[] aClass) {
         var oldPassRatio = ((double) aClass[0]) / (aClass[1]);
@@ -105,7 +106,7 @@ class Solution {
 
     public double maxAverageRatio(int[][] classes, int extraStudents) {
         var pq = new PriorityQueue<PqEntry>(
-                (a,b) -> Double.compare(b.delta, a.delta) // max first
+                (a, b) -> Double.compare(b.delta, a.delta) // max first
         );
         for (var classIndex = 0; classIndex < classes.length; classIndex++) {
             var delta = getDelta(classes[classIndex]);

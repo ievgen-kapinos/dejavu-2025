@@ -4,8 +4,14 @@ public class TreeNode {
     public int val;
     public TreeNode left;
     public TreeNode right;
-    TreeNode() {}
-    public TreeNode(int val) { this.val = val; }
+
+    TreeNode() {
+    }
+
+    public TreeNode(int val) {
+        this.val = val;
+    }
+
     TreeNode(int val, TreeNode left, TreeNode right) {
         this.val = val;
         this.left = left;
@@ -15,9 +21,9 @@ public class TreeNode {
     @Override
     public String toString() {
         if (left == null && right == null) {
-            return "["+ val + "]";
+            return "[" + val + "]";
         } else {
-            return "(" + (left == null ? "-" : left) + " " + val + " "+ (right == null ? "-" : right) + ")";
+            return "(" + (left == null ? "-" : left) + " " + val + " " + (right == null ? "-" : right) + ")";
         }
     }
 }

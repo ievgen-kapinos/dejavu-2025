@@ -61,7 +61,7 @@ class MyTest {
     Solution solution = new Solution();
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/D_2024_11_17__P_2182.csv", numLinesToSkip = 1, maxCharsPerColumn=500000)
+    @CsvFileSource(resources = "/D_2024_11_17__P_2182.csv", numLinesToSkip = 1, maxCharsPerColumn = 500000)
     public void myTest(String expected, String s, int repeatLimit) {
         assertEquals(expected, solution.repeatLimitedString(s, repeatLimit));
     }
@@ -69,24 +69,24 @@ class MyTest {
 
 class Solution {
     public String repeatLimitedString(String s, int repeatLimit) {
-        int[] counts = new int['z'-'a' + 1];
+        int[] counts = new int['z' - 'a' + 1];
 
-        for (int i = 0; i<s.length(); i++) {
+        for (int i = 0; i < s.length(); i++) {
             var c = s.charAt(i);
-            counts[c-'a']++;
+            counts[c - 'a']++;
         }
 
         var repeatLimitedString = new StringBuffer();
 
-        for (int currIdx=(counts.length-1); currIdx>=0; currIdx--) {
+        for (int currIdx = (counts.length - 1); currIdx >= 0; currIdx--) {
             var repeatCount = 0;
             while (counts[currIdx] > 0) {
 
                 if (repeatCount == repeatLimit) {
 
-                    for (var nextInx=(currIdx-1); nextInx>=0; nextInx--) {
+                    for (var nextInx = (currIdx - 1); nextInx >= 0; nextInx--) {
                         if (counts[nextInx] > 0) {
-                            repeatLimitedString.append((char)(nextInx + 'a'));
+                            repeatLimitedString.append((char) (nextInx + 'a'));
                             counts[nextInx]--;
                             repeatCount = 0;
                             break;
@@ -99,7 +99,7 @@ class Solution {
                     }
                 }
 
-                repeatLimitedString.append((char)(currIdx + 'a'));
+                repeatLimitedString.append((char) (currIdx + 'a'));
                 counts[currIdx]--;
                 repeatCount++;
             }

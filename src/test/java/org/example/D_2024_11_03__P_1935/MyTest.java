@@ -47,17 +47,17 @@ class MyTest {
 
     @Test
     public void case1() {
-        assertEquals(1, solution.canBeTypedWords("hello world",  "ad"));
+        assertEquals(1, solution.canBeTypedWords("hello world", "ad"));
     }
 
     @Test
     public void case2() {
-        assertEquals(1, solution.canBeTypedWords("leet code",  "lt"));
+        assertEquals(1, solution.canBeTypedWords("leet code", "lt"));
     }
 
     @Test
     public void case3() {
-        assertEquals(0, solution.canBeTypedWords("leet code",  "e"));
+        assertEquals(0, solution.canBeTypedWords("leet code", "e"));
     }
 }
 

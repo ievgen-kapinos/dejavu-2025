@@ -5,10 +5,11 @@ import org.example.TreeNode;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-
 
 
 /**
@@ -68,7 +69,7 @@ class MyTest {
     Solution solution = new Solution();
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/D_2024_11_20__P_2415_TREE.csv", numLinesToSkip = 1, maxCharsPerColumn=500000)
+    @CsvFileSource(resources = "/D_2024_11_20__P_2415_TREE.csv", numLinesToSkip = 1, maxCharsPerColumn = 500000)
     public void myTest(String expectedStr, String rootStr) {
         var expectedArr = MyTestUtils.parseArray(expectedStr);
         var root = MyTestUtils.parseTree(rootStr);
@@ -110,16 +111,16 @@ class MyTest {
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode() {}
+ * TreeNode(int val) { this.val = val; }
+ * TreeNode(int val, TreeNode left, TreeNode right) {
+ * this.val = val;
+ * this.left = left;
+ * this.right = right;
+ * }
  * }
  */
 class Solution {
@@ -143,7 +144,7 @@ class Solution {
         nodesIndex = 0;
         while (nodesIndex < nodes.size()) {
             level++;
-            var levelNodesCount = 1<<(level-1);
+            var levelNodesCount = 1 << (level - 1);
             var nextLevelNodeIndex = nodesIndex + levelNodesCount;
             if (level % 2 == 0) {
                 Collections.reverse(nodes.subList(nodesIndex, nextLevelNodeIndex));

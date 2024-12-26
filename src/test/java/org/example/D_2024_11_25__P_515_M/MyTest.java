@@ -46,7 +46,7 @@ class MyTest {
     Solution solution = new Solution();
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/D_2024_11_25__P_515_M.csv", numLinesToSkip = 1, maxCharsPerColumn=500000)
+    @CsvFileSource(resources = "/D_2024_11_25__P_515_M.csv", numLinesToSkip = 1, maxCharsPerColumn = 500000)
     public void myTest(String expectedStr, String rootStr) {
         var expected = Arrays.stream(MyTestUtils.parseArray(expectedStr)).boxed().toList();
         var root = MyTestUtils.parseTree(rootStr);
@@ -64,7 +64,7 @@ class Solution {
         return result;
     }
 
-    void dfs(TreeNode node, int levelIdx, List<Integer>result) {
+    void dfs(TreeNode node, int levelIdx, List<Integer> result) {
         if (node == null) {
             return;
         }

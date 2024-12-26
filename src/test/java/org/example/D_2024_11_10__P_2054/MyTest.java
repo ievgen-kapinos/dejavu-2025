@@ -4,7 +4,9 @@ import org.example.MyTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
-import java.util.*;
+import java.util.Map;
+import java.util.Optional;
+import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -63,16 +65,17 @@ class MyTest {
     Solution solution = new Solution();
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/D_2024_11_10__P_2054.csv", numLinesToSkip = 1, maxCharsPerColumn=500000)
+    @CsvFileSource(resources = "/D_2024_11_10__P_2054.csv", numLinesToSkip = 1, maxCharsPerColumn = 500000)
     public void myTest(int expected, String eventsStr) {
         var events = MyTestUtils.parseArray2D(eventsStr);
         assertEquals(expected, solution.maxTwoEvents(events));
     }
 }
+
 class Solution {
     public int maxTwoEvents(int[][] events) {
         var tailMax = new TreeMap<Integer, Integer>();
-        for (var event: events) {
+        for (var event : events) {
             var startTime = event[0];
             var value = event[2];
             tailMax.merge(startTime, value, Integer::max);
@@ -84,7 +87,7 @@ class Solution {
         }
 
         var max = 0;
-        for (int i=0; i<events.length; i++) {
+        for (int i = 0; i < events.length; i++) {
             var event1 = events[i];
             var endTime1 = event1[1];
             var value1 = event1[2];
@@ -93,7 +96,7 @@ class Solution {
                     .ofNullable(tailMax.higherEntry(endTime1))
                     .map(Map.Entry::getValue)
                     .orElse(0);
-            max = Math.max(max, value1+value2);
+            max = Math.max(max, value1 + value2);
         }
         return max;
     }

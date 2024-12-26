@@ -67,7 +67,7 @@ class MyTest {
     Solution solution = new Solution();
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/D_2024_11_22__P_2940_H.csv", numLinesToSkip = 1, maxCharsPerColumn=500000)
+    @CsvFileSource(resources = "/D_2024_11_22__P_2940_H.csv", numLinesToSkip = 1, maxCharsPerColumn = 500000)
     public void myTest(String expectedStr, String heightsStr, String queriesStr) {
         var expected = MyTestUtils.parseArray(expectedStr);
         var heights = MyTestUtils.parseArray(heightsStr);
@@ -82,7 +82,8 @@ class MyTest {
 
 class Solution {
 
-    record QEntry(int qIdx, int maxIdx, int maxHeight) {}
+    record QEntry(int qIdx, int maxIdx, int maxHeight) {
+    }
 
     public int[] leftmostBuildingQueries(int[] heights, int[][] queries) {
         int[] ans = new int[queries.length];
@@ -141,9 +142,9 @@ class Solution0 {
     public int[] leftmostBuildingQueries(int[] heights, int[][] queries) {
         TreeSet<Integer>[] idxToCanMoveToSet = new TreeSet[heights.length];
         var heightToIdx = new TreeMap<Integer, List<Integer>>();
-        for (int fromIdx = heights.length-1; fromIdx >= 0; fromIdx--) {
+        for (int fromIdx = heights.length - 1; fromIdx >= 0; fromIdx--) {
             var higherAndOnTheRight = heightToIdx.tailMap(heights[fromIdx], false); // exclusive
-            
+
             var canMoveToSet = new TreeSet<Integer>();
             canMoveToSet.add(fromIdx);
             for (var idxList : higherAndOnTheRight.values()) {
@@ -155,8 +156,8 @@ class Solution0 {
             idxToCanMoveToSet[fromIdx] = canMoveToSet;
 
             heightToIdx
-                .computeIfAbsent(heights[fromIdx], k -> new ArrayList<>())
-                .add(fromIdx);
+                    .computeIfAbsent(heights[fromIdx], k -> new ArrayList<>())
+                    .add(fromIdx);
         }
 
         var ans = new int[queries.length];
@@ -179,14 +180,14 @@ class Solution0 {
             var bIdx = bIterator.next();
             ans[i] = -1;
             while (true) {
-                 if (aIdx < bIdx) {
-                    if (aIterator.hasNext()){
+                if (aIdx < bIdx) {
+                    if (aIterator.hasNext()) {
                         aIdx = aIterator.next();
                     } else {
                         break;
                     }
-                 } else if (aIdx > bIdx) {
-                    if (bIterator.hasNext()){
+                } else if (aIdx > bIdx) {
+                    if (bIterator.hasNext()) {
                         bIdx = bIterator.next();
                     } else {
                         break;

@@ -55,7 +55,7 @@ class MyTest {
     Solution solution = new Solution();
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/D_2024_11_17a__P_1545.csv", numLinesToSkip = 1, maxCharsPerColumn=500000)
+    @CsvFileSource(resources = "/D_2024_11_17a__P_1545.csv", numLinesToSkip = 1, maxCharsPerColumn = 500000)
     public void myTest(char expected, int n, int k) {
         assertEquals(expected, solution.findKthBit(n, k));
     }
@@ -66,9 +66,9 @@ class Solution {
 
         var middleChar = '1';
         var level = n;
-        while (level>1) {
-            var lengthPlus1 = 2<<(level-1);
-            var middleIndex = lengthPlus1/2;
+        while (level > 1) {
+            var lengthPlus1 = 2 << (level - 1);
+            var middleIndex = lengthPlus1 / 2;
 
             System.out.println("level=" + level);
             System.out.println(" * k=" + k);

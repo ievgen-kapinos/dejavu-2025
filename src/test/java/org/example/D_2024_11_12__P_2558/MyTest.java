@@ -4,7 +4,9 @@ import org.example.MyTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -59,7 +61,7 @@ class MyTest {
     Solution solution = new Solution();
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/D_2024_11_12__P_2558.csv", numLinesToSkip = 1, maxCharsPerColumn=500000)
+    @CsvFileSource(resources = "/D_2024_11_12__P_2558.csv", numLinesToSkip = 1, maxCharsPerColumn = 500000)
     public void myTest(long expected, String giftsStr, int k) {
         var gifts = MyTestUtils.parseArray(giftsStr);
         assertEquals(expected, solution.pickGifts(gifts, k));
@@ -76,7 +78,7 @@ class Solution0 {
                     maxGiftIndex = j;
                 }
             }
-            gifts[maxGiftIndex] = (int)Math.sqrt(gifts[maxGiftIndex]);
+            gifts[maxGiftIndex] = (int) Math.sqrt(gifts[maxGiftIndex]);
         }
 
         return Arrays.stream(gifts).asLongStream().sum();
@@ -92,7 +94,7 @@ class Solution {
 
         for (int i = 0; i < k; i++) {
             var maxGift = pq.poll();
-            pq.add((int)Math.sqrt(maxGift));
+            pq.add((int) Math.sqrt(maxGift));
         }
 
         var rez = 0L;

@@ -3,7 +3,6 @@ package org.example.D_2024_11_05__P_2825;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -57,7 +56,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * 1 <= str2.length <= 105
  * str1 and str2 consist of only lowercase English letters.
  * </pre>
- *
+ * <p>
  * Hint 1
  * Consider the indices we will increment separately.
  * Hint 2
@@ -75,7 +74,7 @@ class MyTest {
     Solution solution = new Solution();
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/D_2024_11_05__P_2825.csv", numLinesToSkip = 1, maxCharsPerColumn=500000)
+    @CsvFileSource(resources = "/D_2024_11_05__P_2825.csv", numLinesToSkip = 1, maxCharsPerColumn = 500000)
     public void myTest(boolean expected, String str1, String str2) {
         assertEquals(expected, solution.canMakeSubsequence(str1, str2));
     }
@@ -101,9 +100,9 @@ class Solution0 {
         var c2 = str2[idx2];
 
         if (c2 == c1 || c2 == c1next) {
-            return match(str1, str2, idx1+1, idx2+1);
+            return match(str1, str2, idx1 + 1, idx2 + 1);
         } else {
-            return match(str1, str2, idx1+1, idx2);
+            return match(str1, str2, idx1 + 1, idx2);
         }
     }
 }

@@ -5,9 +5,9 @@ import org.example.TreeNode;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.TreeMap;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -72,7 +72,7 @@ class MyTest {
     Solution solution = new Solution();
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/D_2024_11_23__P_2471_M_TREE.csv", numLinesToSkip = 1, maxCharsPerColumn=500000)
+    @CsvFileSource(resources = "/D_2024_11_23__P_2471_M_TREE.csv", numLinesToSkip = 1, maxCharsPerColumn = 500000)
     public void myTest(int expected, String rootStr) {
         var root = MyTestUtils.parseTree(rootStr);
 
@@ -112,7 +112,7 @@ class Solution {
 //                valToIdx.put(node.val, idx);
 //            }
 
-            for (int idx = 0; idx < currLevelNodes.size()-1; idx++) {
+            for (int idx = 0; idx < currLevelNodes.size() - 1; idx++) {
                 var val = currLevelNodes.get(idx).val;
 
                 var entry = valToIdx.pollFirstEntry();
@@ -163,10 +163,10 @@ class Solution0 {
 
             // Count operationCount on this level
             // Selection sort
-            for (int i = 0; i < currLevelNodes.size()-1; i++) {
+            for (int i = 0; i < currLevelNodes.size() - 1; i++) {
                 var minIdx = i;
                 var minVal = currLevelNodes.get(i).val;
-                for (int j = i+1; j < currLevelNodes.size(); j++) {
+                for (int j = i + 1; j < currLevelNodes.size(); j++) {
                     var val = currLevelNodes.get(j).val;
                     if (val < minVal) {
                         minIdx = j;

@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 /**
@@ -54,12 +53,12 @@ class MyTest {
 
     @Test
     public void case1() {
-        assertArrayEquals(new int[]{-3,-1,1,3,5}, solution.distinctDifferenceArray(new int[]{1,2,3,4,5}));
+        assertArrayEquals(new int[]{-3, -1, 1, 3, 5}, solution.distinctDifferenceArray(new int[]{1, 2, 3, 4, 5}));
     }
 
     @Test
     public void case2() {
-        assertArrayEquals(new int[]{-2,-1,0,2,3}, solution.distinctDifferenceArray(new int[]{3,2,3,4,2}));
+        assertArrayEquals(new int[]{-2, -1, 0, 2, 3}, solution.distinctDifferenceArray(new int[]{3, 2, 3, 4, 2}));
     }
 //
 //    @Test
@@ -72,12 +71,12 @@ class Solution {
     public int[] distinctDifferenceArray(int[] nums) {
         var diff = new int[nums.length];
         var distinctSet = new HashSet<Integer>();
-        for(int i = 0; i < nums.length; i++) {
+        for (int i = 0; i < nums.length; i++) {
             distinctSet.add(nums[i]);
             diff[i] = distinctSet.size();
         }
         distinctSet.clear();
-        for(int i = nums.length - 1; i >= 0; i--) {
+        for (int i = nums.length - 1; i >= 0; i--) {
             diff[i] -= distinctSet.size();
             distinctSet.add(nums[i]);
         }

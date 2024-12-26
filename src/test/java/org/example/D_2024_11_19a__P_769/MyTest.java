@@ -4,7 +4,6 @@ import org.example.MyTestUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -54,7 +53,7 @@ class MyTest {
     Solution solution = new Solution();
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/D_2024_11_19a__P_769.csv", numLinesToSkip = 1, maxCharsPerColumn=500000)
+    @CsvFileSource(resources = "/D_2024_11_19a__P_769.csv", numLinesToSkip = 1, maxCharsPerColumn = 500000)
     public void myTest(int expected, String arrStr) {
         var arr = MyTestUtils.parseArray(arrStr);
         assertEquals(expected, solution.maxChunksToSorted(arr));

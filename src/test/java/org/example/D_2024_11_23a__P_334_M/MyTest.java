@@ -1,13 +1,8 @@
 package org.example.D_2024_11_23a__P_334_M;
 
 import org.example.MyTestUtils;
-import org.example.TreeNode;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -55,7 +50,7 @@ class MyTest {
     Solution solution = new Solution();
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/D_2024_11_23a__P_334_M.csv", numLinesToSkip = 1, maxCharsPerColumn=500000)
+    @CsvFileSource(resources = "/D_2024_11_23a__P_334_M.csv", numLinesToSkip = 1, maxCharsPerColumn = 500000)
     public void myTest(boolean expected, String numsStr) {
         var nums = MyTestUtils.parseArray(numsStr);
 
@@ -70,7 +65,7 @@ class Solution {
     public boolean increasingTriplet(int[] nums) {
         Integer oneMin = null;
         Integer twoMin = null;
-        for (var num: nums) {
+        for (var num : nums) {
             if (oneMin == null || oneMin > num) {
                 oneMin = num;
             }
